@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
         title: const Text(
           'Home Page',
           style: TextStyle(color: Colors.black),
+          
         ),
       ),
     );
