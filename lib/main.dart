@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:genzo/src/features/home/homescreen.dart';
+
+import 'package:genzo/src/features/auth_screens/create_account/create_account.dart';
+
 import 'package:genzo/src/commons/bottom_navigation/bottom_navigation.dart';
 
 void main() {
