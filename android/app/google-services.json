@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "45199565954",
+    "project_id": "genzo-c7d06",
+    "storage_bucket": "genzo-c7d06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45199565954:android:2fc0e96c9137d1a37b809b",
+        "android_client_info": {
+          "package_name": "com.example.genzo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqd7xsLBaF1akuAXbMzcjk9WjiqqQ_DyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
