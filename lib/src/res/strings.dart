@@ -13,7 +13,8 @@ class Onboarding {
       'A 5-digit verification code has been sent on\nrevametha@gmail.com';
   static const onboardingmessage =
       'Your data adventures await. Sign in to embark on a journey of discovery and insights.';
-  static const termsandconsition = 'By tapping continuing with Email, Apple, Google or Facebook, you agree to Social Impact’s Privacy Policy and Terms & Conditions';    
+  static const termsandconsition =
+      'By tapping continuing with Email, Apple, Google or Facebook, you agree to Social Impact’s Privacy Policy and Terms & Conditions';
 }
 
 class TextFieldHint {

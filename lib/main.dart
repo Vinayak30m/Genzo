@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genzo/src/features/home/homescreen.dart';
+import 'package:genzo/src/commons/bottom_navigation/bottom_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: MyHomePage(),
     );
   }
 }

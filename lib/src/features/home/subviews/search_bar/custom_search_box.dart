@@ -11,6 +11,16 @@ class CustomSearchBox extends StatefulWidget {
 
 class _CustomSearchBoxState extends State<CustomSearchBox> {
   TextEditingController _searchController = TextEditingController();
+  List<String> searchKeywords = [
+    'palm reading',
+    'vedic science',
+    'daily essential',
+    'banking',
+    'mind reading',
+    'astrology',
+    'myth',
+    'genzo',
+  ];
 
   @override
   Widget build(BuildContext context) {

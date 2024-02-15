@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 class AppColor {
+  AppColor._();
   static const Color elevatedbuttonColor = Color(0xFF3498DB);
   static const Color secondaryelevatedButtonColor = Color(0xFFECF0F1);
   static const Color textbuttonColor = Color(0xFF3498DB);

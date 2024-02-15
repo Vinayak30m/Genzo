@@ -9,7 +9,7 @@ class QuoteService {
 
   static Stream<String> getQuoteStream() {
     // ignore: prefer_const_constructors
-    return Stream.periodic(Duration(seconds: 15), (index) {
+    return Stream.periodic(Duration(seconds: 10), (index) {
       return quotes[index % quotes.length];
     });
   }
