@@ -6,10 +6,12 @@ class CategoryBoxWidget extends StatefulWidget {
   final String image;
   final String text;
   final VoidCallback onPressed;
+  final String? videoUrl;
   const CategoryBoxWidget(
       {required this.image,
       required this.text,
       required this.onPressed,
+      this.videoUrl,
       super.key});
 
   @override
