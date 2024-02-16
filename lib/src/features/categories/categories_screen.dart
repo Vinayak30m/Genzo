@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:genzo/src/commons/widgets/custom_appbar.dart';
 import 'package:genzo/src/commons/widgets/custom_textbutton_widget.dart';
 import 'package:genzo/src/features/categories/data/course_card_data/course_card_data.dart';
+import 'package:genzo/src/features/categories/widget/youtube_player_widget.dart';
 import 'package:genzo/src/features/home/widgets/unique_pick_card_widget.dart';
 import 'package:genzo/src/res/colors.dart';
 
 class CategoriesScreen extends StatefulWidget {
   final String categoryText;
-  const CategoriesScreen({required this.categoryText,super.key});
+  final String? videoUrl;
+  const CategoriesScreen(
+      {required this.categoryText, this.videoUrl, super.key});
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -31,6 +34,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          YoutubePlayerControllerWidget(
+              videoUrl: 'https://youtu.be/F5RNFiT1GNY?si=x8qpCQIXqjJnMBvR'),
           Expanded(
             child: ListView.builder(
                 itemCount: courseData.length,

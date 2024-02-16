@@ -9,6 +9,7 @@ import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.da
 import 'package:genzo/src/features/home/widgets/categorybox_widget.dart';
 import 'package:genzo/src/features/home/widgets/home_appbar.dart';
 import 'package:genzo/src/features/home/widgets/home_carousel.dart';
+import 'package:genzo/src/features/home/widgets/top_genzos_card.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,7 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.transparent,
                     child: Text(
                       _currentQuote,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -118,74 +121,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: [
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/ayurveda_illus.png',
-                //       text: 'Ayurveda',
-                //     ),
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/finance_illus.png',
-                //       text: 'Finance',
-                //     ),
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/rituals_illus.png',
-                //       text: 'Rituals',
-                //     ),
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/homeessential_illus.png',
-                //       text: 'Home Essential',
-                //     ),
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: screenDimensions.screenHeight * 0.01,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: [
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/genz_illus.png',
-                //       text: 'Gen Z',
-                //     ),
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/automobile_illus.png',
-                //       text: 'Automobiles',
-                //     ),
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/music_illus.png',
-                //       text: 'Music',
-                //     ),
-                //     CategoryBoxWidget(
-                //       image: 'assets/images/png/uniquehobbies_illus.png',
-                //       text: 'Unique Hobbies',
-                //     ),
-                //   ],
-                // ),
                 Container(
-                  height: 200,
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        childAspectRatio: 1 / 1.1,
-                      ),
-                      itemCount: skillData.length,
-                      itemBuilder: (context, index) {
-                        final skill = skillData[index];
-                        return CategoryBoxWidget(
-                          image: skill.image,
-                          text: skill.categorytext,
-                          onPressed: () {
-                            print(skill.categorytext);
-                            nextScreen(
-                                context,
-                                CategoriesScreen(
-                                  categoryText: skill.categorytext,
-                                ));
-                          },
-                        );
-                      }),
+                  height: screenDimensions.screenHeight * 0.27,
+                  child: Expanded(
+                    child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          childAspectRatio: 1 / 1.3,
+                        ),
+                        itemCount: skillData.length,
+                        itemBuilder: (context, index) {
+                          final skill = skillData[index];
+                          return CategoryBoxWidget(
+                            image: skill.image,
+                            text: skill.categorytext,
+                            onPressed: () {
+                              print(skill.categorytext);
+                              nextScreen(
+                                  context,
+                                  CategoriesScreen(
+                                    categoryText: skill.categorytext,
+                                  ));
+                            },
+                          );
+                        }),
+                  ),
                 ),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
@@ -197,7 +158,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
-                // UniquePicksCardWidget()
+                const Text(
+                  'Top Genzos',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                ),
+                const SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TopGenzosCardWidget(
+                        image: 'assets/images/png/topgenzo1.png',
+                        name: 'Mr. Bhau Kadam',
+                        profession: 'Actor, Comedian',
+                      ),
+                      TopGenzosCardWidget(
+                        image: 'assets/images/png/topgenzo2.png',
+                        name: 'Sri Sri Ravi Shankar',
+                        profession: 'Spritual, Yoga Guru',
+                      ),
+                      TopGenzosCardWidget(
+                        image: 'assets/images/png/topgenzo3.png',
+                        name: 'Ajay and Atul',
+                        profession: 'Music Composer',
+                      ),
+                      TopGenzosCardWidget(
+                        image: 'assets/images/png/topgenzo4.png',
+                        name: 'Mr. Aman Kumar',
+                        profession: 'Self Care',
+                      ),
+                      TopGenzosCardWidget(
+                        image: 'assets/images/png/topgenzo5.png',
+                        name: 'Mr. Vinayak Mishra',
+                        profession: 'Digital Wellness',
+                      ),
+                      TopGenzosCardWidget(
+                        image: 'assets/images/png/topgenzo6.png',
+                        name: 'Mr. Sairaj Kulkarni',
+                        profession: 'Rapper and freestyle',
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

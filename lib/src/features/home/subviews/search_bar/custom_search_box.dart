@@ -27,7 +27,9 @@ class _CustomSearchBoxState extends State<CustomSearchBox> {
     return Container(
       // height: MediaQuery.of(context).size.height * 0.041,
       decoration: BoxDecoration(
-          color: Color(0xFFECF0F1), borderRadius: BorderRadius.circular(3)),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(13),
+          border: Border.all(color: Colors.grey)),
       padding: EdgeInsets.all(0.0),
       child: TextField(
         maxLines: null,
@@ -38,11 +40,11 @@ class _CustomSearchBoxState extends State<CustomSearchBox> {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: widget.hintText,
-          hintStyle: TextStyle(fontSize: 14, color: Color(0xFF999999)),
+          hintStyle: TextStyle(fontSize: 15, color: Colors.grey),
           prefixIcon: Icon(
             Icons.search,
             size: 18,
-            color: Color(0xFF999999),
+            color: Colors.grey,
           ),
           suffixIcon: _searchController.text.isNotEmpty
               ? IconButton(
