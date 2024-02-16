@@ -39,19 +39,20 @@ class _NewpasswordState extends State<Newpassword> {
             SizedBox(
               height: screenDimensions.screenHeight * 0.042,
             ),
-            CustomTextformfield(
-              hintText: TextFieldHint.passwordHint,
-              isObscured: true,
-              showPasswordIcon: true,
-            ),
+            // CustomTextformfield(
+            //   hintText: TextFieldHint.passwordHint,
+            //   isObscured: true,
+            //   showPasswordIcon: true,
+            //   controller: ,
+            // ),
             SizedBox(
               height: screenDimensions.screenHeight * 0.015,
             ),
-            CustomTextformfield(
-              hintText: TextFieldHint.reenterPasswordHint,
-              isObscured: true,
-              showPasswordIcon: true,
-            ),
+            // CustomTextformfield(
+            //   hintText: TextFieldHint.reenterPasswordHint,
+            //   isObscured: true,
+            //   showPasswordIcon: true, controller: ,
+            // ),
             SizedBox(
               height: screenDimensions.screenHeight * 0.010,
             ),

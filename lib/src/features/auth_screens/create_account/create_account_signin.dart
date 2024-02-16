@@ -1,9 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:genzo/src/commons/widgets/custom_textbutton_widget.dart';
 import 'package:genzo/src/core/navigation_service/navigation_service.dart';
 import 'package:genzo/src/features/auth_screens/forgot_password/forgot_password.dart';
+import 'package:genzo/src/features/auth_screens/providers/sign_in_provider.dart';
+import 'package:genzo/src/features/home/homescreen.dart';
 import 'package:genzo/src/res/assets.dart';
 import 'package:genzo/src/res/strings.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 import '../../../commons/widgets/custom_divider.dart';
 import '../../../commons/widgets/primary_elevated_button.dart';
 import '../../../utils/screen_dimensions.dart';
@@ -18,6 +23,14 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+  String? errorMessage = '';
+  bool isLogin = true;
+
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final RoundedLoadingButtonController googleController =
+      RoundedLoadingButtonController();
+  final SignInProvider signInProvider = SignInProvider();
   @override
   Widget build(BuildContext context) {
     final ph = MediaQuery.of(context).size.height;
@@ -36,20 +49,43 @@ class _SigninState extends State<Signin> {
                 height: screenDimensions.screenHeight * 0.03,
               ),
               CustomTextformfield(
-                  hintText: TextFieldHint.fullnameHint,
-                  showPasswordIcon: false),
+                hintText: TextFieldHint.emailHint,
+                showPasswordIcon: false,
+                controller: _emailTextController,
+              ),
               SizedBox(
                 height: screenDimensions.screenHeight * 0.015,
               ),
               CustomTextformfield(
                 hintText: TextFieldHint.passwordHint,
                 isObscured: true,
+                controller: _passwordTextController,
               ),
               SizedBox(
                 height: screenDimensions.screenHeight * 0.040,
               ),
               PrimaryElevatedButtonWidget(
-                  onPressed: () {}, buttonText: ElevatedButtonText.signin),
+                  onPressed: () {
+                    EasyLoading.show(status: 'verifying');
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      EasyLoading.dismiss();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    }).onError((error, stackTrace) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('An error occured. Please try again.'),
+                        ),
+                      );
+                    });
+                  },
+                  buttonText: ElevatedButtonText.signin),
               SizedBox(
                 height: screenDimensions.screenHeight * 0.008,
               ),
@@ -71,7 +107,9 @@ class _SigninState extends State<Signin> {
                 height: screenDimensions.screenHeight * 0.025,
               ),
               PrimaryElevatedButtonWidget1(
-                  onPressed: () {},
+                  onPressed: () {
+                    signInProvider.signInWithGoogle();
+                  },
                   buttonText: Authentication.google,
                   leadingImage: const AssetImage(
                     ImageAssets.googleLogoPng,

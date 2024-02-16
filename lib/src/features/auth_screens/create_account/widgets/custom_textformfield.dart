@@ -6,12 +6,14 @@ class CustomTextformfield extends StatefulWidget {
   final String hintText;
   bool isObscured;
   bool showPasswordIcon;
+  final TextEditingController controller;
 
   CustomTextformfield({
     Key? key,
     required this.hintText,
     this.isObscured = false,
     this.showPasswordIcon = true,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -33,6 +35,7 @@ class _CustomTextformfieldState extends State<CustomTextformfield> {
     return Container(
       height: screenDimensions.screenHeight * 0.065,
       child: TextFormField(
+        controller: widget.controller,
         obscureText: widget.isObscured,
         validator: _validateText,
         decoration: InputDecoration(
