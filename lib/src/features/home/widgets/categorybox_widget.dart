@@ -37,10 +37,15 @@ class _CategoryBoxWidgetState extends State<CategoryBoxWidget> {
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Image.asset(
-                  widget.image,
-                  fit: BoxFit.contain,
-                ),
+                child: widget.image.startsWith('http')
+                    ? Image.network(
+                        widget.image,
+                        fit: BoxFit.contain,
+                      )
+                    : Image.asset(
+                        widget.image,
+                        fit: BoxFit.contain,
+                      ),
               ),
             ),
           ),
