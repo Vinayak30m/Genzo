@@ -5,7 +5,11 @@ class TopGenzosCardWidget extends StatefulWidget {
   final String image;
   final String name;
   final String profession;
-  const TopGenzosCardWidget({required this.image, required this.name, required this.profession,super.key});
+  const TopGenzosCardWidget(
+      {required this.image,
+      required this.name,
+      required this.profession,
+      super.key});
 
   @override
   State<TopGenzosCardWidget> createState() => _TopGenzosCardWidgetState();
@@ -17,7 +21,7 @@ class _TopGenzosCardWidgetState extends State<TopGenzosCardWidget> {
     ScreenDimensions screenDimensions = ScreenDimensions(context);
     return Container(
       color: Colors.white,
-      height: screenDimensions.screenHeight * 0.19,
+      height: screenDimensions.screenHeight * 0.20,
       width: screenDimensions.screenWidth * 0.3,
       child: Card(
         color: Colors.white,

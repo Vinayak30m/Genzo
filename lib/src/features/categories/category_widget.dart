@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:genzo/src/features/categories/categories_screen.dart';
 import 'package:genzo/src/features/home/widgets/categorybox_widget.dart';
 
 class CategoryWidget extends StatefulWidget {
-  const CategoryWidget({super.key});
+  final String? videoUrl;
+  const CategoryWidget({this.videoUrl, super.key});
 
   @override
   State<CategoryWidget> createState() => _CategoryWidgetState();
@@ -54,6 +53,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                       builder: (context) {
                         return (CategoriesScreen(
                           categoryName: categoryData['categoryName'],
+                          videoUrl: widget.videoUrl ??
+                              'https://youtu.be/F5RNFiT1GNY?si=UBRsrW6IkajFvMte',
                         ));
                       },
                     ),

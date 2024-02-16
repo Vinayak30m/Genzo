@@ -1,19 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:genzo/src/core/navigation_service/navigation_service.dart';
-import 'package:genzo/src/features/categories/categories_screen.dart';
 import 'package:genzo/src/features/categories/category_widget.dart';
 import 'package:genzo/src/features/home/carousel_description/banner_widget.dart';
-import 'package:genzo/src/features/home/data/skills/skills_data.dart';
 import 'package:genzo/src/features/home/subviews/quotes_services/quotes_data.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
 import 'package:genzo/src/features/home/widgets/categorybox_widget.dart';
 import 'package:genzo/src/features/home/widgets/home_appbar.dart';
-import 'package:genzo/src/features/home/widgets/home_carousel.dart';
 import 'package:genzo/src/features/home/widgets/top_genzos_card.dart';
 import 'package:genzo/src/features/home/widgets/unique_pick_card_widget.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
+
+import '../categories/model/course_model/course_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -113,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 BannerWidget(),
+                BannerWidget(),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
