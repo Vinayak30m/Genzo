@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genzo/src/commons/widgets/custom_appbar.dart';
 import 'package:genzo/src/commons/widgets/custom_textbutton_widget.dart';
 import 'package:genzo/src/features/categories/data/course_card_data/course_card_data.dart';
+import 'package:genzo/src/features/categories/widget/youtube_player_widget.dart';
 import 'package:genzo/src/features/home/widgets/unique_pick_card_widget.dart';
 import 'package:genzo/src/res/colors.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
@@ -128,8 +129,6 @@ class CategoriesScreen extends StatelessWidget {
               )
             ],
           ),
-        );
-      },
     );
   }
 }

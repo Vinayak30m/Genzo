@@ -36,6 +36,7 @@ dependencies:
   flutter_otp_text_field: ^1.1.1
   google_fonts: ^6.1.0
   msh_checkbox: ^2.0.1
+  youtube_player_flutter: ^8.1.2
   firebase_core: ^2.25.4
   cloud_firestore: ^4.15.4
   firebase_auth: ^4.17.4
