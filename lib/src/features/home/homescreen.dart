@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:genzo/src/core/navigation_service/navigation_service.dart';
 import 'package:genzo/src/features/categories/categories_screen.dart';
-import 'package:genzo/src/features/categories/model/course_model/course_model.dart';
+import 'package:genzo/src/features/categories/category_widget.dart';
+import 'package:genzo/src/features/home/carousel_description/banner_widget.dart';
 import 'package:genzo/src/features/home/data/skills/skills_data.dart';
 import 'package:genzo/src/features/home/subviews/quotes_services/quotes_data.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
@@ -112,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HomeCarouselWidget(),
+                 BannerWidget(),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
@@ -180,34 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
-                Container(
-                  height: screenDimensions.screenHeight * 0.27,
-                  child: Expanded(
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        childAspectRatio: 1 / 1.3,
-                      ),
-                      itemCount: skillData.length,
-                      itemBuilder: (context, index) {
-                        final skill = skillData[index];
-                        return CategoryBoxWidget(
-                          image: skill.image,
-                          text: skill.categorytext,
-                          onPressed: () {
-                            print(skill.categorytext);
-                            nextScreen(
-                                context,
-                                CategoriesScreen(
-                                  categoryText: skill.categorytext,
-                                ));
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ),
+                CategoryWidget(),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
