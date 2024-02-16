@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:genzo/src/core/navigation_service/navigation_service.dart';
 import 'package:genzo/src/features/categories/categories_screen.dart';
+import 'package:genzo/src/features/categories/model/course_model/course_model.dart';
 import 'package:genzo/src/features/home/data/skills/skills_data.dart';
 import 'package:genzo/src/features/home/subviews/quotes_services/quotes_data.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
@@ -10,20 +11,52 @@ import 'package:genzo/src/features/home/widgets/categorybox_widget.dart';
 import 'package:genzo/src/features/home/widgets/home_appbar.dart';
 import 'package:genzo/src/features/home/widgets/home_carousel.dart';
 import 'package:genzo/src/features/home/widgets/top_genzos_card.dart';
+import 'package:genzo/src/features/home/widgets/unique_pick_card_widget.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late PageController _pageController;
   late Stream<String> _quoteStream;
   late StreamSubscription<String> _quoteSubscription;
   late String _currentQuote =
       'With the power of technology at our fingertips, we can connect and inspire worldwide';
+
+  late Timer _scrollTimer;
+  int _currentPageIndex = 0;
+  final List<CourseModel> _courses = [
+    CourseModel(
+        thumbnailimage: 'assets/images/png/uniquepickcard1.png',
+        title: 'Mind Mastery',
+        subtitle: 'The art of reading minds',
+        description:
+            'Uncover hidden thoughts with mind whisperer: The art of mind reading',
+        coursereach: '5k since published🔥',
+        price: 'Rs. 299'),
+    CourseModel(
+        thumbnailimage: 'assets/images/png/uniquepickcard1.png',
+        title: 'Mind Mastery',
+        subtitle: 'The art of reading minds',
+        description:
+            'Uncover hidden thoughts with mind whisperer: The art of mind reading',
+        coursereach: '5k since published🔥',
+        price: 'Rs. 299'),
+    CourseModel(
+        thumbnailimage: 'assets/images/png/uniquepickcard1.png',
+        title: 'Mind Mastery',
+        subtitle: 'The art of reading minds',
+        description:
+            'Uncover hidden thoughts with mind whisperer: The art of mind reading',
+        coursereach: '5k since published🔥',
+        price: 'Rs. 299'),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -33,14 +66,40 @@ class _HomeScreenState extends State<HomeScreen> {
         _currentQuote = quote;
       });
     });
+    _pageController = PageController();
+
+    _scrollTimer = Timer.periodic(Duration(seconds: 10), (timer) {
+      _scrollToNext();
+    });
   }
 
   @override
   void dispose() {
     _quoteSubscription.cancel();
+    _pageController.dispose();
+    _scrollTimer.cancel();
     super.dispose();
   }
 
+  void _scrollToNext() {
+    if (_currentPageIndex < _courses.length - 1) {
+      _currentPageIndex++;
+      _pageController.animateToPage(
+        _currentPageIndex,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      _currentPageIndex = 0;
+      _pageController.animateToPage(
+        _currentPageIndex,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     ScreenDimensions screenDimensions = ScreenDimensions(context);
     return SafeArea(
@@ -125,27 +184,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: screenDimensions.screenHeight * 0.27,
                   child: Expanded(
                     child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          childAspectRatio: 1 / 1.3,
-                        ),
-                        itemCount: skillData.length,
-                        itemBuilder: (context, index) {
-                          final skill = skillData[index];
-                          return CategoryBoxWidget(
-                            image: skill.image,
-                            text: skill.categorytext,
-                            onPressed: () {
-                              print(skill.categorytext);
-                              nextScreen(
-                                  context,
-                                  CategoriesScreen(
-                                    categoryText: skill.categorytext,
-                                  ));
-                            },
-                          );
-                        }),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        childAspectRatio: 1 / 1.3,
+                      ),
+                      itemCount: skillData.length,
+                      itemBuilder: (context, index) {
+                        final skill = skillData[index];
+                        return CategoryBoxWidget(
+                          image: skill.image,
+                          text: skill.categorytext,
+                          onPressed: () {
+                            print(skill.categorytext);
+                            nextScreen(
+                                context,
+                                CategoriesScreen(
+                                  categoryText: skill.categorytext,
+                                ));
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -156,13 +216,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                 ),
                 SizedBox(
+                  height: screenDimensions.screenHeight *
+                      0.12, // Adjust the height as needed
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: _courses.length,
+                    itemBuilder: (context, index) {
+                      return UniquePicksCardWidget(course: _courses[index]);
+                    },
+                  ),
+                ),
+                SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
                 const Text(
                   'Top Genzos',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                 ),
-                const SingleChildScrollView(
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
