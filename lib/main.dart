@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:genzo/firebase_options.dart';
 
 import 'package:genzo/src/features/home/homescreen.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: CreateAccount(),
+      builder: EasyLoading.init(),
     );
   }
 }

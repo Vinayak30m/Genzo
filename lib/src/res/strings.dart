@@ -35,6 +35,7 @@ class ElevatedButtonText {
   static const connect = 'Connect';
   static const signup = 'Sign up';
   static const signin = 'Sign in';
+  static const forgotPassword = 'Send Email';
 }
 
 class TextButtonText {

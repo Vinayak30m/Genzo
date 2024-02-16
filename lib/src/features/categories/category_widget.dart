@@ -27,7 +27,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading categories...");
+          return LinearProgressIndicator();
         }
 
         return Container(
@@ -38,7 +38,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               childAspectRatio: 1 / 1.1,
             ),
             itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
+            itemBuilder: ((context, index) {
               final categoryData = snapshot.data!.docs[index];
               return CategoryBoxWidget(
                 image: categoryData['image'],
@@ -60,7 +60,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                   );
                 },
               );
-            },
+            }),
           ),
         );
       },

@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 BannerWidget(),
+                BannerWidget(),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
