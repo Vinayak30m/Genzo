@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genzo/src/features/auth_screens/create_account/create_account.dart';
 import 'package:genzo/src/res/colors.dart';
 
 import '../../commons/widgets/custom_text_widget.dart';
@@ -17,10 +18,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.initState();
 
     // Redirect to LoginScreen after 2 seconds
-    Future.delayed(const Duration(seconds: 30), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Signup()),
+        MaterialPageRoute(builder: (context) => CreateAccount()),
       );
     });
   }

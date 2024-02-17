@@ -2,6 +2,10 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:genzo/src/utils/screen_dimensions.dart';
+
+import '../../../res/colors.dart';
 
 class BannerWidget extends StatefulWidget {
   const BannerWidget({super.key});
@@ -27,7 +31,7 @@ class _BannerWidgetState extends State<BannerWidget> {
       }
     });
   }
-  
+
   int _currentPage = 0;
   final PageController _pageController = PageController(
     initialPage: 0,
@@ -55,13 +59,14 @@ class _BannerWidgetState extends State<BannerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenDimensions screenDimensions = ScreenDimensions(context);
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
-        height: 160,
+        height: screenDimensions.screenHeight * 0.195,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.yellow.shade700,
+          color: AppColor.primaryColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: PageView.builder(
@@ -74,7 +79,14 @@ class _BannerWidgetState extends State<BannerWidget> {
                 // You can navigate to a detail screen or perform any other action
                 print('Banner tapped: ${_bannerImage[index]}');
               },
-              child: Image.network(_bannerImage[index], fit: BoxFit.cover),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child:
+                        Image.network(_bannerImage[index], fit: BoxFit.cover)),
+              ),
             );
           },
         ),

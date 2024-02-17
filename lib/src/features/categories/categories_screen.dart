@@ -5,6 +5,7 @@ import 'package:genzo/src/commons/widgets/custom_appbar.dart';
 import 'package:genzo/src/commons/widgets/custom_textbutton_widget.dart';
 import 'package:genzo/src/features/categories/widget/quick_access_circular_tile_widget.dart';
 import 'package:genzo/src/features/categories/widget/youtube_player_widget.dart';
+import 'package:genzo/src/features/home/course_detail/course_detail.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
 import 'package:genzo/src/res/colors.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
@@ -55,9 +56,9 @@ class CategoriesScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const YoutubePlayerControllerWidget(
-                      videoUrl:
-                          'https://youtu.be/F5RNFiT1GNY?si=UBRsrW6IkajFvMte'),
+                  YoutubePlayerControllerWidget(
+                    categoryTitle: categoryName,
+                  ),
                   // SizedBox(
                   //   height: screenDimensions.screenHeight * 0.01,
                   // ),
@@ -147,72 +148,77 @@ class CategoriesScreen extends StatelessWidget {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: ((context, index) {
                           final courseData = snapshot.data!.docs[index];
-                          return Card(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            borderOnForeground: true,
-                            child: Container(
-                              height: screenDimensions.screenHeight * 0.12,
-                              decoration: BoxDecoration(
-                                  // boxShadow: <BoxShadow>[
-                                  //   BoxShadow(
-                                  //     color: Colors.black54,
-                                  //     blurRadius: 15.0,
-                                  //     offset: Offset(0.0, 1),
-                                  //   )
-                                  // ],
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CourseDetailScreen(
+                                    courseDetailData: courseData,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              borderOnForeground: true,
+                              child: Container(
+                                height: screenDimensions.screenHeight * 0.12,
+                                decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(
-                                      color:
-                                          AppColor.secondaryelevatedButtonColor,
-                                      width: 1)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
+                                    color:
+                                        AppColor.secondaryelevatedButtonColor,
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
                                       width: screenDimensions.screenWidth * 0.4,
                                       height:
                                           screenDimensions.screenHeight * 0.15,
                                       child: Image.network(
                                         courseData['imageUrl'],
                                         fit: BoxFit.fill,
-                                      )),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        courseData['courseTitle'],
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold),
                                       ),
-                                      // SizedBox(
-                                      //   height: 10,
-                                      // ),
-
-                                      Container(
-                                        width:
-                                            screenDimensions.screenWidth * 0.4,
-                                        // height: screenDimensions.screenHeight * 0.4,
-                                        child: Text(
-                                          courseData['courseDescription'],
-                                          softWrap: true,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          courseData['courseTitle'],
                                           style: const TextStyle(
-                                            fontSize: 8,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                      ),
-                                      Text('₹ ${courseData['coursePrice']}')
-                                    ],
-                                  )
-                                ],
+                                        Container(
+                                          width: screenDimensions.screenWidth *
+                                              0.4,
+                                          child: Text(
+                                            courseData['courseDescription'],
+                                            softWrap: true,
+                                            style: const TextStyle(
+                                              fontSize: 8,
+                                            ),
+                                          ),
+                                        ),
+                                        Text('₹ ${courseData['coursePrice']}'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           );

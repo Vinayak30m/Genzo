@@ -179,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
-                CategoryWidget(),
+                const CategoryWidget(),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),

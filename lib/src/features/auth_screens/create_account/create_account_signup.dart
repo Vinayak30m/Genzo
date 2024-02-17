@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:genzo/src/commons/bottom_navigation/bottom_navigation.dart';
+import 'package:genzo/src/commons/widgets/custom_textbutton_widget.dart';
+import 'package:genzo/src/core/navigation_service/navigation_service.dart';
 import 'package:genzo/src/features/auth_screens/providers/sign_in_provider.dart';
 import 'package:genzo/src/features/home/homescreen.dart';
 import 'package:genzo/src/res/assets.dart';
@@ -109,7 +112,14 @@ class _SignupState extends State<Signup> {
               SizedBox(
                 height: screenDimensions.screenHeight * 0.025,
               ),
-              const CustomDividerTextWidget(text: Onboarding.dividerOr),
+              CustomTextButtonWidget(
+                  buttonText: 'Skip for now',
+                  fontSize: 12,
+                  onPressed: () {
+                    nextScreen(context, MyHomePage());
+                  },
+                  textcolor: Colors.grey),
+              CustomDividerTextWidget(text: Onboarding.dividerOr),
               SizedBox(
                 height: screenDimensions.screenHeight * 0.025,
               ),
