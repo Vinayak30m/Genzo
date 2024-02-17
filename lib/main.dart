@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:genzo/firebase_options.dart';
 import 'package:genzo/src/commons/bottom_navigation/bottom_navigation.dart';
+import 'package:genzo/src/features/splash_onboarding/splash_screen.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
       debugShowCheckedModeBanner: false,
-      home: CreateAccount(),
+      home: SplashScreen(),
       builder: EasyLoading.init(),
     );
   }
