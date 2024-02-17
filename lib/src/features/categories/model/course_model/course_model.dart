@@ -5,6 +5,7 @@ class CourseModel {
   final String description;
   final String coursereach;
   final String price;
+  final String? youtubeUrl;
 
   CourseModel({
     required this.thumbnailimage,
@@ -13,5 +14,6 @@ class CourseModel {
     required this.description,
     required this.coursereach,
     required this.price,
+    this.youtubeUrl,
   });
 }

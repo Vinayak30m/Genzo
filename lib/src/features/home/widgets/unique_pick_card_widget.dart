@@ -18,13 +18,6 @@ class _UniquePicksCardWidgetState extends State<UniquePicksCardWidget> {
     return Container(
       height: screenDimensions.screenHeight * 0.12,
       decoration: BoxDecoration(
-          // boxShadow: <BoxShadow>[
-          //   BoxShadow(
-          //     color: Colors.black54,
-          //     blurRadius: 15.0,
-          //     offset: Offset(0.0, 1),
-          //   )
-          // ],
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
               color: AppColor.secondaryelevatedButtonColor, width: 1)),
