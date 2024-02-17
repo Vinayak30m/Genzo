@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genzo/src/features/cart/cart_screen.dart';
 import 'package:genzo/src/features/home/homescreen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -10,6 +11,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = const [
     HomeScreen(),
+    CartScreen(),
     // FeedsScreen(),
     // ChooseAccountScreen(),
     // ProfileScreen(),
@@ -58,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
             activeIcon: _buildActiveIcon(Icons.insights_outlined),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded),
-            label: 'Account',
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
             activeIcon: _buildActiveIcon(Icons.account_circle_rounded),
           ),
         ],

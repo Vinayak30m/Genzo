@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:genzo/src/res/colors.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class YoutubePlayerControllerWidget extends StatefulWidget {
-  final String videoUrl;
+  final String categoryTitle;
 
-  const YoutubePlayerControllerWidget({Key? key, required this.videoUrl})
-      : super(key: key);
+  const YoutubePlayerControllerWidget({Key? key, required this.categoryTitle});
 
   @override
   _YoutubePlayerControllerWidgetState createState() =>
@@ -17,17 +17,34 @@ class _YoutubePlayerControllerWidgetState
     extends State<YoutubePlayerControllerWidget> {
   late YoutubePlayerController _controller;
   bool _hasFocus = false;
+  String? videoUrl;
 
   @override
   void initState() {
     super.initState();
-    _controller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(widget.videoUrl) ?? '',
-      flags: const YoutubePlayerFlags(
-        autoPlay: true,
-        mute: false,
-      ),
-    );
+    _fetchVideoUrl();
+  }
+
+  Future<void> _fetchVideoUrl() async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('categoriesvideo')
+        .where('category', isEqualTo: widget.categoryTitle)
+        .limit(1)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      final data = snapshot.docs.first.data();
+      setState(() {
+        videoUrl = data['video'];
+        _controller = YoutubePlayerController(
+          initialVideoId: YoutubePlayer.convertUrlToId(videoUrl!) ?? '',
+          flags: const YoutubePlayerFlags(
+            autoPlay: true,
+            mute: false,
+          ),
+        );
+      });
+    }
   }
 
   @override

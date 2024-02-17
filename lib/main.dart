@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:genzo/firebase_options.dart';
 import 'package:genzo/src/commons/bottom_navigation/bottom_navigation.dart';
-import 'package:genzo/src/features/splash_onboarding/splash_screen.dart';
+import 'package:genzo/src/core/providers/cart_provider.dart';
+import 'package:genzo/src/features/auth_screens/create_account/create_account.dart';
+import 'package:provider/provider.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -14,7 +16,16 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) {
+          return CartProvider();
+        }),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: MyHomePage(),
       builder: EasyLoading.init(),
     );
   }
