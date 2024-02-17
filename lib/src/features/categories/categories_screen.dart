@@ -85,7 +85,53 @@ class CategoriesScreen extends StatelessWidget {
                   else if(categoryName == 'Gen Z')
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [],
+                    children: [
+                      QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz1.png',
+                            text: 'Stiching and Sewing'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz2.png',
+                            text: 'Rapping & Freestyle'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz3.png',
+                            text: 'Cooking & Nutrient'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz4.png',
+                            text: 'Self Care'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz5.png',
+                            text: 'Digital Wellness'),
+                      QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz6.png',
+                            text: 'Music'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz7.png',
+                            text: 'Theatre'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz8.png',
+                            text: 'Public Speaking'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz9.png',
+                            text: 'Camera Posing'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz10.png',
+                            text: 'Creating Reels'),
+                    ],
+                  ),
+                  else if(categoryName == 'Ayurveda')
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      QuickAcessCircularWidget(
+                            images: 'assets/images/png/ayurveda1.png',
+                            text: 'Ayurvedic Practices'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/ayurveda2.png',
+                            text: 'Herbal Remedies'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/ayurveda3.png',
+                            text: 'Yoga & Meditation'),
+                    ],
                   ),
 
                   SizedBox(
