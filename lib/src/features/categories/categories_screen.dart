@@ -116,7 +116,7 @@ class CategoriesScreen extends StatelessWidget {
                             child: Card(
                               elevation: 2,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                               borderOnForeground: true,
                               child: Container(
