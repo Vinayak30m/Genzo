@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:genzo/src/core/providers/cart_provider.dart';
 import 'package:video_player/video_player.dart';
+import 'package:provider/provider.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   final dynamic courseDetailData;
@@ -35,6 +37,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final CartProvider _cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -128,7 +131,18 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
             padding: const EdgeInsets.all(2.0),
             child: ElevatedButton.icon(
               onPressed: () {
-                // Add to Cart button logic
+                _cartProvider.addToCart(
+                  widget.courseDetailData['courseId'],
+                  widget.courseDetailData['courseTitle'],
+                  widget.courseDetailData['tutorName'],
+                  widget.courseDetailData['courseDescription'],
+                  widget.courseDetailData['imageUrl'],
+                  widget.courseDetailData['videoUrl'],
+                  widget.courseDetailData['videoUrlList'],
+                  widget.courseDetailData['courseDuration'],
+                  widget.courseDetailData['coursePrice'],
+                  widget.courseDetailData['createdAt'],
+                );
               },
               icon: Icon(Icons.add_shopping_cart, color: Colors.white,),
               label: Text(
