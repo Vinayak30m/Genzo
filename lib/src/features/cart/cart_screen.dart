@@ -143,7 +143,7 @@ class _CartScreenState extends State<CartScreen> {
                 primary: Colors.yellow[800],
               ),
               child: Text(
-                'Place Order',
+                'Buy Now ',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.white,

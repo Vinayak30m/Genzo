@@ -7,6 +7,7 @@ import 'package:genzo/src/features/categories/widget/quick_access_circular_tile_
 import 'package:genzo/src/features/categories/widget/youtube_player_widget.dart';
 import 'package:genzo/src/features/home/course_detail/course_detail.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
+import 'package:genzo/src/features/home/subviews/search_bar/searchbar_category_course.dart';
 import 'package:genzo/src/res/colors.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
 // import 'package:rounded_loading_button/rounded_loading_button.dart';
@@ -118,7 +119,7 @@ class CategoriesScreen extends StatelessWidget {
                             images: 'assets/images/png/genz10.png',
                             text: 'Creating Reels'),
                     ],
-                  ),
+                  )
                   else if(categoryName == 'Ayurveda')
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -138,8 +139,8 @@ class CategoriesScreen extends StatelessWidget {
                   SizedBox(
                     height: screenDimensions.screenHeight * 0.01,
                   ),
-                  CustomSearchBox(
-                      hintText: 'Search for $categoryName learning courses'),
+                  CategorySearchBar(
+                    categoryname: categoryName,),
                   SizedBox(
                     height: screenDimensions.screenHeight * 0.01,
                   ),
