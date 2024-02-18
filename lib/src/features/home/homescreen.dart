@@ -5,6 +5,7 @@ import 'package:genzo/src/features/categories/category_widget.dart';
 import 'package:genzo/src/features/home/carousel_description/banner_widget.dart';
 import 'package:genzo/src/features/home/subviews/quotes_services/quotes_data.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
+import 'package:genzo/src/features/home/subviews/search_bar/searchbar_courses.dart';
 import 'package:genzo/src/features/home/widgets/categorybox_widget.dart';
 import 'package:genzo/src/features/home/widgets/home_appbar.dart';
 import 'package:genzo/src/features/home/widgets/top_genzos_card.dart';
@@ -131,8 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
-                const CustomSearchBox(
-                    hintText: 'search categories, courses or skills'),
+                CategorySearch(),
                 SizedBox(
                   height: screenDimensions.screenHeight * 0.01,
                 ),
@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Top Genzos',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                 ),
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -7,6 +7,7 @@ import 'package:genzo/src/features/categories/widget/quick_access_circular_tile_
 import 'package:genzo/src/features/categories/widget/youtube_player_widget.dart';
 import 'package:genzo/src/features/home/course_detail/course_detail.dart';
 import 'package:genzo/src/features/home/subviews/search_bar/custom_search_box.dart';
+import 'package:genzo/src/features/home/subviews/search_bar/searchbar_category_course.dart';
 import 'package:genzo/src/res/colors.dart';
 import 'package:genzo/src/utils/screen_dimensions.dart';
 // import 'package:rounded_loading_button/rounded_loading_button.dart';
@@ -83,17 +84,63 @@ class CategoriesScreen extends StatelessWidget {
                             text: 'Grace'),
                       ],
                     )
-                  else if (categoryName == 'Gen Z')
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [],
-                    ),
+                  else if(categoryName == 'Gen Z')
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz1.png',
+                            text: 'Stiching and Sewing'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz2.png',
+                            text: 'Rapping & Freestyle'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz3.png',
+                            text: 'Cooking & Nutrient'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz4.png',
+                            text: 'Self Care'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz5.png',
+                            text: 'Digital Wellness'),
+                      QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz6.png',
+                            text: 'Music'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz7.png',
+                            text: 'Theatre'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz8.png',
+                            text: 'Public Speaking'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz9.png',
+                            text: 'Camera Posing'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/genz10.png',
+                            text: 'Creating Reels'),
+                    ],
+                  )
+                  else if(categoryName == 'Ayurveda')
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      QuickAcessCircularWidget(
+                            images: 'assets/images/png/ayurveda1.png',
+                            text: 'Ayurvedic Practices'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/ayurveda2.png',
+                            text: 'Herbal Remedies'),
+                        QuickAcessCircularWidget(
+                            images: 'assets/images/png/ayurveda3.png',
+                            text: 'Yoga & Meditation'),
+                    ],
+                  ),
 
                   SizedBox(
                     height: screenDimensions.screenHeight * 0.01,
                   ),
-                  CustomSearchBox(
-                      hintText: 'Search for $categoryName learning courses'),
+                  CategorySearchBar(
+                    categoryname: categoryName,),
                   SizedBox(
                     height: screenDimensions.screenHeight * 0.01,
                   ),
