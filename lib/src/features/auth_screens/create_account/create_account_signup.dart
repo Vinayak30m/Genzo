@@ -31,6 +31,16 @@ class _SignupState extends State<Signup> {
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
   final SignInProvider signInProvider = SignInProvider();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _handleGoogleSignIn() async {
+    try {
+      GoogleAuthProvider _googleProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(_googleProvider);
+    } catch (error) {
+      print(error);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final ph = MediaQuery.of(context).size.height;
@@ -125,7 +135,16 @@ class _SignupState extends State<Signup> {
               ),
               PrimaryElevatedButtonWidget1(
                   onPressed: () {
-                    signInProvider.signInWithGoogle();
+                    EasyLoading.show(status: 'verifying');
+                    _handleGoogleSignIn().whenComplete(() {
+                      EasyLoading.dismiss();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    });
                   },
                   buttonText: Authentication.google,
                   leadingImage: const AssetImage(

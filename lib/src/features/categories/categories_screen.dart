@@ -84,11 +84,11 @@ class CategoriesScreen extends StatelessWidget {
                             text: 'Grace'),
                       ],
                     )
-                  else if(categoryName == 'Gen Z')
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      QuickAcessCircularWidget(
+                  else if (categoryName == 'Gen Z')
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        QuickAcessCircularWidget(
                             images: 'assets/images/png/genz1.png',
                             text: 'Stiching and Sewing'),
                         QuickAcessCircularWidget(
@@ -103,7 +103,7 @@ class CategoriesScreen extends StatelessWidget {
                         QuickAcessCircularWidget(
                             images: 'assets/images/png/genz5.png',
                             text: 'Digital Wellness'),
-                      QuickAcessCircularWidget(
+                        QuickAcessCircularWidget(
                             images: 'assets/images/png/genz6.png',
                             text: 'Music'),
                         QuickAcessCircularWidget(
@@ -118,13 +118,13 @@ class CategoriesScreen extends StatelessWidget {
                         QuickAcessCircularWidget(
                             images: 'assets/images/png/genz10.png',
                             text: 'Creating Reels'),
-                    ],
-                  )
-                  else if(categoryName == 'Ayurveda')
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      QuickAcessCircularWidget(
+                      ],
+                    )
+                  else if (categoryName == 'Ayurveda')
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        QuickAcessCircularWidget(
                             images: 'assets/images/png/ayurveda1.png',
                             text: 'Ayurvedic Practices'),
                         QuickAcessCircularWidget(
@@ -133,14 +133,15 @@ class CategoriesScreen extends StatelessWidget {
                         QuickAcessCircularWidget(
                             images: 'assets/images/png/ayurveda3.png',
                             text: 'Yoga & Meditation'),
-                    ],
-                  ),
+                      ],
+                    ),
 
                   SizedBox(
                     height: screenDimensions.screenHeight * 0.01,
                   ),
                   CategorySearchBar(
-                    categoryname: categoryName,),
+                    categoryname: categoryName,
+                  ),
                   SizedBox(
                     height: screenDimensions.screenHeight * 0.01,
                   ),

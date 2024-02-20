@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '45199565954',
     projectId: 'genzo-c7d06',
     authDomain: 'genzo-c7d06.firebaseapp.com',
+    databaseURL: 'https://genzo-c7d06-default-rtdb.firebaseio.com',
     storageBucket: 'genzo-c7d06.appspot.com',
     measurementId: 'G-9WEW6LZMYZ',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:45199565954:android:2fc0e96c9137d1a37b809b',
     messagingSenderId: '45199565954',
     projectId: 'genzo-c7d06',
+    databaseURL: 'https://genzo-c7d06-default-rtdb.firebaseio.com',
     storageBucket: 'genzo-c7d06.appspot.com',
   );
 
@@ -66,7 +68,9 @@ class DefaultFirebaseOptions {
     appId: '1:45199565954:ios:63762345afaacb6c7b809b',
     messagingSenderId: '45199565954',
     projectId: 'genzo-c7d06',
+    databaseURL: 'https://genzo-c7d06-default-rtdb.firebaseio.com',
     storageBucket: 'genzo-c7d06.appspot.com',
+    iosClientId: '45199565954-74kvmq797mnuusqob7a3po6u47hbqvtm.apps.googleusercontent.com',
     iosBundleId: 'com.example.genzo',
   );
 
@@ -75,7 +79,9 @@ class DefaultFirebaseOptions {
     appId: '1:45199565954:ios:b87f4a44abb1d0d87b809b',
     messagingSenderId: '45199565954',
     projectId: 'genzo-c7d06',
+    databaseURL: 'https://genzo-c7d06-default-rtdb.firebaseio.com',
     storageBucket: 'genzo-c7d06.appspot.com',
+    iosClientId: '45199565954-0tc9buul7aqm1qn4tfmpfn143piqoebl.apps.googleusercontent.com',
     iosBundleId: 'com.example.genzo.RunnerTests',
   );
 }

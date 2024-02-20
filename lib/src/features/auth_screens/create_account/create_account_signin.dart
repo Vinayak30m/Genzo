@@ -31,6 +31,19 @@ class _SigninState extends State<Signin> {
   final RoundedLoadingButtonController googleController =
       RoundedLoadingButtonController();
   final SignInProvider signInProvider = SignInProvider();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  User? user;
+
+  Future<void> _handleGoogleSignIn() async {
+    try {
+      GoogleAuthProvider _googleProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(_googleProvider);
+    } catch (error) {
+      print(error);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final ph = MediaQuery.of(context).size.height;
@@ -108,7 +121,16 @@ class _SigninState extends State<Signin> {
               ),
               PrimaryElevatedButtonWidget1(
                   onPressed: () {
-                    signInProvider.signInWithGoogle();
+                    EasyLoading.show(status: 'verifying');
+                    _handleGoogleSignIn().whenComplete(() {
+                      EasyLoading.dismiss();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    });
                   },
                   buttonText: Authentication.google,
                   leadingImage: const AssetImage(
